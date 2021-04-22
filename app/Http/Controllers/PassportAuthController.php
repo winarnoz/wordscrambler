@@ -46,11 +46,12 @@ class PassportAuthController extends Controller
             'email' => $request->email,
             'password' => $request->password
         ];
+
+        $user = User::where('email',$request->email)->where('password', $request->password)->first();
  
-        if (auth()->attempt($data)) {
+        if (!empty($user)) {
             $token = $this->generateRandomString(60);
             // update token 
-            $user = User::find(auth()->user()->id);
             $user->api_token = $token;
             $user->save();
             return response()->json(['token' => $token], 200);
