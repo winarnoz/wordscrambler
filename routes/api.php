@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::post('request-token', 'App\Http\Controllers\PassportAuthController@login');
 Route::get('fetch-word', 'App\Http\Controllers\ApiController@fetchWord');
+Route::post('submit-word', 'App\Http\Controllers\ApiController@submitWord');
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
