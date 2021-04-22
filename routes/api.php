@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
+Route::post('request-token', 'App\Http\Controllers\PassportAuthController@login');
 Route::get('fetch-word', 'App\Http\Controllers\ApiController@fetchWord');
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
